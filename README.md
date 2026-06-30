@@ -17,17 +17,38 @@ A deterministic, configurable pipeline that ingests candidate data from multiple
 
 ## Quick Start
 
-```bash
-# 1. Install dependencies
-pip install -r requirements.txt
+### 1. Installation
 
-# 2. Run with default config (full output)
+#### On macOS / Linux:
+```bash
+# Create and activate virtual environment
+python3 -m venv venv
+source venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+#### On Windows (Command Prompt / PowerShell):
+```cmd
+:: Create and activate virtual environment
+python -m venv venv
+call venv\Scripts\activate.bat
+
+:: Install dependencies
+pip install -r requirements.txt
+```
+
+### 2. Execution & Testing
+
+```bash
+# Run with default config (full output)
 python main.py --input-dir sample_inputs/ --verbose --validate
 
-# 3. Run with custom config (minimal output)
+# Run with custom config (minimal output)
 python main.py --input-dir sample_inputs/ --config configs/minimal_config.json --output output.json
 
-# 4. Run tests
+# Run all 38 tests
 python -m pytest tests/ -v
 ```
 
