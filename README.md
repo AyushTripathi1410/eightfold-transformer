@@ -50,7 +50,6 @@ Arguments:
 |-------|--------|--------|----------|
 | **Structured** | Recruiter CSV | `.csv` (name, email, phone, company, title, location, skills) | 3 |
 | **Structured** | ATS JSON blob | `.json` (non-canonical field names) | 4 (highest) |
-| **Structured/API** | LinkedIn Profile URL | `.linkedin` (profile fields JSON) | 4 (highest) |
 | **Unstructured/API** | GitHub Profile URL | `.github` (fetches public REST API for name, bio, repos/languages) | 2 |
 | **Unstructured** | Resume file | `.pdf`, `.docx`, `.txt` (parsed text with sections) | 2 |
 | **Unstructured** | Recruiter notes | `.txt` (informal observations) | 1 |
