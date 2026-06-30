@@ -46,11 +46,11 @@
 
     @media print {
       body {
-        padding: 12mm 12mm;
+        padding: 10mm 10mm;
         max-width: none;
       }
       html {
-        font-size: 10px; /* Slight scale down to ensure 1-page fit on print */
+        font-size: 9.5px; /* Slight scale down to ensure 1-page fit on print */
       }
     }
 
@@ -162,6 +162,52 @@
 
     .pipeline-val {
       color: var(--text-dark);
+    }
+
+    /* Pipeline Visual Diagram styling */
+    .pipeline-visual {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 8px 0 10px 0;
+      width: 100%;
+      gap: 2px;
+    }
+
+    .pipeline-box {
+      background-color: var(--bg-light);
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      padding: 5px 6px;
+      text-align: center;
+      flex: 1;
+      min-width: 0;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+      border-top: 2px solid var(--primary-color);
+    }
+
+    .pipeline-box .box-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--primary-color);
+      margin-bottom: 2px;
+      text-transform: capitalize;
+    }
+
+    .pipeline-box .box-subtitle {
+      font-size: 0.76rem;
+      color: var(--text-light);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .pipeline-arrow {
+      font-size: 1.1rem;
+      color: var(--primary-color);
+      font-weight: 700;
+      padding: 0 2px;
+      user-select: none;
     }
 
     /* Definition / Schema Normalization Table */
@@ -290,6 +336,44 @@
       question from deciding which value wins, and keeping them apart made both easier to test alone. <strong>Project</strong> runs last, so the output
       config can reshape results without the rest of the pipeline ever knowing it exists.
     </div>
+    <!-- Pipeline Visual Flow Diagram -->
+    <div class="pipeline-visual">
+      <div class="pipeline-box">
+        <div class="box-title">detect</div>
+        <div class="box-subtitle">Ext &amp; Content</div>
+      </div>
+      <div class="pipeline-arrow">&rarr;</div>
+      <div class="pipeline-box">
+        <div class="box-title">extract</div>
+        <div class="box-subtitle">Source Parsers</div>
+      </div>
+      <div class="pipeline-arrow">&rarr;</div>
+      <div class="pipeline-box">
+        <div class="box-title">normalize</div>
+        <div class="box-subtitle">Standardization</div>
+      </div>
+      <div class="pipeline-arrow">&rarr;</div>
+      <div class="pipeline-box">
+        <div class="box-title">merge</div>
+        <div class="box-subtitle">Union-Find Link</div>
+      </div>
+      <div class="pipeline-arrow">&rarr;</div>
+      <div class="pipeline-box">
+        <div class="box-title">confidence</div>
+        <div class="box-subtitle">Weighted Scorer</div>
+      </div>
+      <div class="pipeline-arrow">&rarr;</div>
+      <div class="pipeline-box">
+        <div class="box-title">project</div>
+        <div class="box-subtitle">Custom Schema</div>
+      </div>
+      <div class="pipeline-arrow">&rarr;</div>
+      <div class="pipeline-box">
+        <div class="box-title">validate</div>
+        <div class="box-subtitle">JSON Schema</div>
+      </div>
+    </div>
+
     <div class="pipeline-list">
       <div class="pipeline-item">
         <div class="pipeline-key">detect</div>
