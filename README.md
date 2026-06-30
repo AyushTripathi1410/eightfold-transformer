@@ -119,11 +119,11 @@ Runtime config reshapes the output without code changes:
 ## Testing
 
 ```bash
-# Run all 37 tests
+# Run all 38 tests
 python -m pytest tests/ -v
 
 # Tests cover:
-# - Source type detection (4 types + unknown)
+# - Source type detection (5 types + unknown)
 # - Each extractor (CSV, JSON, resume, notes)
 # - Phone/date/skill normalization
 # - Merge by email/phone/fuzzy name
