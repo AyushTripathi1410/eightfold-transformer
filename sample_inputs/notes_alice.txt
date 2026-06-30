@@ -1,0 +1,37 @@
+Recruiter Notes — Alice Johnson
+================================
+
+Spoke with Alice Johnson on 2024-11-15. She's currently at Google as a Senior
+Software Engineer, based in San Francisco. Has been there about 2.5 years now.
+Before that she was at Amazon doing backend work.
+
+Really strong Python skills — she lit up talking about building ML feature
+stores and mentioned she's been writing a lot of Go lately for performance-
+critical services. Also very solid on system design; I asked her to walk
+through a high-level architecture for a distributed caching layer and she
+nailed it without hesitation. Clearly thinks about tradeoffs (latency vs
+consistency, cost vs reliability) in a mature way.
+
+She has roughly 5 years of industry experience (Amazon + Google). Stanford MS
+in CS, Berkeley undergrad. Impressive academic background.
+
+She mentioned she's open to exploring staff-level roles — specifically
+interested in companies where she can have broader architectural influence
+and own a larger scope. Not actively looking but would be interested in the
+right opportunity. Prefers to stay in the Bay Area but open to remote.
+
+LinkedIn: linkedin.com/in/alicejohnson
+
+Interviewer observations (from phone screen 2024-11-20):
+- Communication was excellent. Very clear and structured when explaining
+  technical concepts. Didn't ramble.
+- Asked thoughtful questions about the team and product direction.
+- Seemed genuinely curious rather than just going through the motions.
+- One minor note: she was a bit hesitant when discussing management
+  aspirations — seems to prefer the IC track for now.
+
+Overall impression: Strong hire candidate for a Staff SWE or Senior SWE role.
+Would recommend moving to on-site.
+
+Follow-up: Sent her the job description for the Staff Platform Engineer role.
+Waiting to hear back.

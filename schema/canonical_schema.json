@@ -1,0 +1,229 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://eightfold-transformer.example.com/schema/canonical_profile.json",
+  "title": "Canonical Candidate Profile",
+  "description": "Unified candidate profile schema produced by the Eightfold Multi-Source Candidate Data Transformer. All source data is normalized and merged into this canonical representation.",
+  "type": "object",
+  "required": ["candidate_id", "full_name"],
+  "additionalProperties": false,
+  "properties": {
+    "candidate_id": {
+      "type": "string",
+      "description": "Unique deterministic identifier for the candidate, typically derived from a hash of deduplicated identity signals (email, phone, name)."
+    },
+    "full_name": {
+      "type": "string",
+      "description": "The candidate's full name in normalized form (e.g., 'Alice Johnson').",
+      "minLength": 1
+    },
+    "emails": {
+      "type": "array",
+      "description": "All known email addresses for the candidate, deduplicated and lowercased.",
+      "items": {
+        "type": "string",
+        "format": "email"
+      },
+      "uniqueItems": true,
+      "default": []
+    },
+    "phones": {
+      "type": "array",
+      "description": "All known phone numbers in E.164 format (e.g., '+14155551234').",
+      "items": {
+        "type": "string",
+        "pattern": "^\\+[1-9]\\d{1,14}$"
+      },
+      "uniqueItems": true,
+      "default": []
+    },
+    "location": {
+      "type": "object",
+      "description": "The candidate's primary location, normalized.",
+      "properties": {
+        "city": {
+          "type": ["string", "null"],
+          "description": "City name (e.g., 'San Francisco')."
+        },
+        "region": {
+          "type": ["string", "null"],
+          "description": "State, province, or region (e.g., 'California')."
+        },
+        "country": {
+          "type": ["string", "null"],
+          "description": "ISO 3166-1 alpha-2 country code (e.g., 'US').",
+          "pattern": "^[A-Z]{2}$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "links": {
+      "type": "object",
+      "description": "Professional and social profile links.",
+      "properties": {
+        "linkedin": {
+          "type": ["string", "null"],
+          "format": "uri",
+          "description": "Full LinkedIn profile URL."
+        },
+        "github": {
+          "type": ["string", "null"],
+          "format": "uri",
+          "description": "Full GitHub profile URL."
+        },
+        "portfolio": {
+          "type": ["string", "null"],
+          "format": "uri",
+          "description": "Personal website or portfolio URL."
+        },
+        "other": {
+          "type": "array",
+          "description": "Additional profile or social links.",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          },
+          "default": []
+        }
+      },
+      "additionalProperties": false
+    },
+    "headline": {
+      "type": ["string", "null"],
+      "description": "A short professional headline or summary (e.g., 'Senior Software Engineer with 5+ years experience')."
+    },
+    "years_experience": {
+      "type": ["number", "null"],
+      "description": "Estimated total years of professional experience.",
+      "minimum": 0
+    },
+    "skills": {
+      "type": "array",
+      "description": "Merged and deduplicated skill entries with confidence scores and source provenance.",
+      "items": {
+        "type": "object",
+        "required": ["name", "confidence", "sources"],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Canonical skill name (e.g., 'Python', 'Kubernetes').",
+            "minLength": 1
+          },
+          "confidence": {
+            "type": "number",
+            "description": "Confidence score from 0.0 (lowest) to 1.0 (highest) reflecting how strongly the evidence supports this skill attribution.",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "sources": {
+            "type": "array",
+            "description": "List of source identifiers where this skill was observed (e.g., 'recruiter_export.csv', 'resume_alice.txt').",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1
+          }
+        }
+      },
+      "default": []
+    },
+    "experience": {
+      "type": "array",
+      "description": "Work experience entries in reverse chronological order.",
+      "items": {
+        "type": "object",
+        "required": ["company", "title"],
+        "additionalProperties": false,
+        "properties": {
+          "company": {
+            "type": "string",
+            "description": "Company or organization name.",
+            "minLength": 1
+          },
+          "title": {
+            "type": "string",
+            "description": "Job title at the company.",
+            "minLength": 1
+          },
+          "start": {
+            "type": ["string", "null"],
+            "description": "Start date in YYYY-MM format.",
+            "pattern": "^\\d{4}-(0[1-9]|1[0-2])$"
+          },
+          "end": {
+            "type": ["string", "null"],
+            "description": "End date in YYYY-MM format, or null if this is the current role.",
+            "pattern": "^\\d{4}-(0[1-9]|1[0-2])$"
+          },
+          "summary": {
+            "type": ["string", "null"],
+            "description": "Brief summary or bullet points of key responsibilities and achievements."
+          }
+        }
+      },
+      "default": []
+    },
+    "education": {
+      "type": "array",
+      "description": "Educational background entries.",
+      "items": {
+        "type": "object",
+        "required": ["institution"],
+        "additionalProperties": false,
+        "properties": {
+          "institution": {
+            "type": "string",
+            "description": "Name of the educational institution.",
+            "minLength": 1
+          },
+          "degree": {
+            "type": ["string", "null"],
+            "description": "Degree type (e.g., 'BS', 'MS', 'PhD')."
+          },
+          "field": {
+            "type": ["string", "null"],
+            "description": "Field of study or major."
+          },
+          "end_year": {
+            "type": ["number", "null"],
+            "description": "Graduation year.",
+            "minimum": 1900,
+            "maximum": 2100
+          }
+        }
+      },
+      "default": []
+    },
+    "provenance": {
+      "type": "array",
+      "description": "Tracks which source contributed each field and what method was used to extract or infer it.",
+      "items": {
+        "type": "object",
+        "required": ["field", "source", "method"],
+        "additionalProperties": false,
+        "properties": {
+          "field": {
+            "type": "string",
+            "description": "Dot-notation path to the canonical field (e.g., 'full_name', 'skills[2].name', 'location.city')."
+          },
+          "source": {
+            "type": "string",
+            "description": "Identifier of the source file or system (e.g., 'ats_dump.json', 'resume_alice.txt')."
+          },
+          "method": {
+            "type": "string",
+            "description": "How the value was obtained: 'direct_mapping', 'regex_extraction', 'nlp_extraction', 'inferred', 'manual'.",
+            "enum": ["direct_mapping", "regex_extraction", "nlp_extraction", "inferred", "manual", "api_fetch", "pdf_text_extraction"]
+          }
+        }
+      },
+      "default": []
+    },
+    "overall_confidence": {
+      "type": "number",
+      "description": "Aggregate confidence score for the entire profile, reflecting data completeness and cross-source consistency. Ranges from 0.0 to 1.0.",
+      "minimum": 0,
+      "maximum": 1
+    }
+  }
+}

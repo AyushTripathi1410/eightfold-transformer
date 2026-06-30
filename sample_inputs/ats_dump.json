@@ -1,0 +1,70 @@
+{
+  "candidates": [
+    {
+      "applicant_name": "Alice Johnson",
+      "contact_email": "alice.johnson@gmail.com",
+      "contact_phone": "+1-415-555-1234",
+      "organization": "Google",
+      "role": "Senior Software Engineer",
+      "city": "San Francisco",
+      "state": "California",
+      "country_code": "US",
+      "tech_stack": ["Python", "Java", "Kubernetes", "AWS", "Go"],
+      "work_history": [
+        {
+          "company": "Google",
+          "title": "Senior Software Engineer",
+          "start_date": "2022-03",
+          "end_date": null
+        },
+        {
+          "company": "Amazon",
+          "title": "Software Engineer",
+          "start_date": "2019-06",
+          "end_date": "2022-02"
+        }
+      ],
+      "education_history": [
+        {
+          "school": "Stanford University",
+          "degree": "MS",
+          "major": "Computer Science",
+          "graduation_year": 2019
+        }
+      ]
+    },
+    {
+      "applicant_name": "Charlie Davis",
+      "contact_email": "charlie.d@outlook.com",
+      "contact_phone": "555-0199",
+      "organization": "Startup Inc",
+      "role": "Full Stack Developer",
+      "city": "Austin",
+      "state": "Texas",
+      "country_code": "US",
+      "tech_stack": ["JavaScript", "React", "Node.js", "PostgreSQL"],
+      "work_history": [
+        {
+          "company": "Startup Inc",
+          "title": "Full Stack Developer",
+          "start_date": "2021-08",
+          "end_date": null
+        },
+        {
+          "company": "Freelance",
+          "title": "Web Developer",
+          "start_date": "2019-01",
+          "end_date": "2021-07"
+        }
+      ],
+      "education_history": [
+        {
+          "school": "University of Texas at Austin",
+          "degree": "BS",
+          "major": "Computer Science",
+          "graduation_year": 2018
+        }
+      ]
+    }
+  ]
+}

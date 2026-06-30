@@ -1,0 +1,59 @@
+[
+  {
+    "full_name": "Alice Johnson",
+    "primary_email": "alice.johnson@gmail.com",
+    "phone": "+14155551234",
+    "skills": [
+      "agile",
+      "aws",
+      "ci/cd",
+      "code review",
+      "docker",
+      "ec2",
+      "git",
+      "go",
+      "grafana",
+      "java",
+      "jenkins",
+      "kubernetes",
+      "lambda",
+      "machine learning",
+      "pandas",
+      "prometheus",
+      "python",
+      "pytorch",
+      "rest",
+      "s3",
+      "sagemaker",
+      "system design",
+      "tensorflow",
+      "terraform",
+      "test-driven development"
+    ],
+    "candidate_id": "bbe9665df433876a"
+  },
+  {
+    "full_name": "Charlie Davis",
+    "primary_email": "charlie.d@outlook.com",
+    "phone": null,
+    "skills": [
+      "javascript",
+      "node.js",
+      "postgresql",
+      "react"
+    ],
+    "candidate_id": "97407b63e85adb22"
+  },
+  {
+    "full_name": "Bob Smith",
+    "primary_email": "bob.smith@yahoo.com",
+    "phone": "+12125559876",
+    "skills": [
+      "python",
+      "r",
+      "sql",
+      "tensorflow"
+    ],
+    "candidate_id": "79b41b8ad9064c8c"
+  }
+]

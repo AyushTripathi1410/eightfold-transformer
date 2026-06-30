@@ -1,0 +1,4 @@
+name,email,phone,current_company,title,location,skills
+Alice Johnson,alice.johnson@gmail.com,+14155551234,Google,Senior Software Engineer,"San Francisco, CA","Python, Java, Machine Learning, Kubernetes"
+Bob Smith,bob.smith@yahoo.com,+12125559876,Meta,Data Scientist,"New York, NY","Python, R, SQL, TensorFlow"
+Alice Johnson,a.johnson@google.com,+14155551234,Google,Sr. SWE,"SF, California","Python, Go, Docker"

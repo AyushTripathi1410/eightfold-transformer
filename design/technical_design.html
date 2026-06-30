@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ayush Tripathi — Technical Design</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* Reset & Base Styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --primary-color: #8c2d19; /* Warm brown/red accent color from screenshot */
+      --text-dark: #222222;
+      --text-muted: #555555;
+      --text-light: #777777;
+      --border-color: #d1d5db;
+      --bg-light: #f9fafb;
+    }
+
+    html {
+      font-size: 11px; /* Designed to fit comfortably on one A4 page */
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--text-dark);
+      background-color: #ffffff;
+      line-height: 1.4;
+      padding: 15mm 15mm;
+      max-width: 210mm;
+      margin: 0 auto;
+      font-weight: 400;
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    @media print {
+      body {
+        padding: 12mm 12mm;
+        max-width: none;
+      }
+      html {
+        font-size: 10px; /* Slight scale down to ensure 1-page fit on print */
+      }
+    }
+
+    /* Header Layout */
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 4px;
+    }
+
+    .header-left h1 {
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+    }
+
+    .header-left .subtitle {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .header-right {
+      text-align: right;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .header-right .email {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    .header-right .role-date {
+      display: block;
+      margin-top: 1px;
+    }
+
+    .header-divider {
+      border: none;
+      border-top: 1.5px solid var(--primary-color);
+      margin: 8px 0 12px 0;
+    }
+
+    /* Intro Text */
+    .intro-text {
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      line-height: 1.45;
+      font-weight: 400;
+    }
+
+    /* Section Layout */
+    .section {
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 6px;
+      text-transform: none;
+      letter-spacing: 0.01em;
+    }
+
+    .section-desc {
+      font-size: 1.0rem;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    /* Key-Value Lists */
+    .pipeline-list {
+      margin-left: 10px;
+      margin-bottom: 8px;
+    }
+
+    .pipeline-item {
+      display: flex;
+      margin-bottom: 4px;
+      font-size: 1.0rem;
+    }
+
+    .pipeline-key {
+      width: 110px;
+      font-weight: 700;
+      color: var(--primary-color);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .pipeline-key::after {
+      content: " \2192";
+      margin-left: auto;
+      margin-right: 8px;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+
+    .pipeline-val {
+      color: var(--text-dark);
+    }
+
+    /* Definition / Schema Normalization Table */
+    .schema-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 6px;
+      margin-bottom: 6px;
+    }
+
+    .schema-table td {
+      padding: 5px 8px;
+      vertical-align: top;
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    .schema-table td.field-name {
+      width: 110px;
+      font-weight: 700;
+      color: var(--text-dark);
+      padding-left: 10px;
+    }
+
+    .schema-table td.field-desc {
+      color: var(--text-dark);
+    }
+
+    /* Normal text styling within paragraphs */
+    .section p {
+      font-size: 1.0rem;
+      margin-bottom: 8px;
+      line-height: 1.45;
+      color: var(--text-dark);
+    }
+
+    .section p strong {
+      font-weight: 600;
+    }
+
+    /* Edge cases list layout */
+    .edge-case-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 6px;
+      margin-bottom: 8px;
+    }
+
+    .edge-case-table td {
+      padding: 3px 0;
+      vertical-align: top;
+      font-size: 0.95rem;
+    }
+
+    .edge-case-table td.case-trigger {
+      width: 250px;
+      padding-left: 10px;
+      position: relative;
+    }
+
+    .edge-case-table td.case-trigger::before {
+      content: "\00b7";
+      position: absolute;
+      left: 0;
+      font-weight: 700;
+    }
+
+    .edge-case-table td.case-effect {
+      color: var(--text-dark);
+    }
+
+    /* Inline code styles */
+    code {
+      font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+      font-size: 0.9em;
+      background-color: var(--bg-light);
+      padding: 1px 3px;
+      border-radius: 3px;
+      color: #333;
+    }
+
+    /* Footer area */
+    .footer-divider {
+      border: none;
+      border-top: 1px solid var(--border-color);
+      margin: 16px 0 6px 0;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      color: var(--text-light);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header-container">
+    <div class="header-left">
+      <h1>Ayush Tripathi</h1>
+      <div class="subtitle">Technical Design &middot; Multi-Source Candidate Data Transformer</div>
+    </div>
+    <div class="header-right">
+      <a href="mailto:tripathiayush998@gmail.com" class="email">tripathiayush998@gmail.com</a>
+      <span class="role-date">Eightfold Engineering Intern, Jul&ndash;Dec 2026</span>
+    </div>
+  </div>
+
+  <hr class="header-divider">
+
+  <!-- INTRO -->
+  <div class="intro-text">
+    Eightfold sees the same candidate scattered across an ATS export, a recruiter's spreadsheet, a résumé, and a quick note
+    from a phone screen. This design turns that scatter into one record per candidate &mdash; every value traceable to where it
+    came from and how much it should be trusted. One principle shaped most of the smaller decisions: an honestly empty field
+    is safer than a confidently wrong one.
+  </div>
+
+  <!-- PIPELINE -->
+  <div class="section">
+    <div class="section-title">Pipeline</div>
+    <div class="section-desc">
+      Seven stages, run in order. <strong>Confidence</strong> is split out from <strong>merge</strong> deliberately &mdash; scoring how much to trust a field is a different
+      question from deciding which value wins, and keeping them apart made both easier to test alone. <strong>Project</strong> runs last, so the output
+      config can reshape results without the rest of the pipeline ever knowing it exists.
+    </div>
+    <div class="pipeline-list">
+      <div class="pipeline-item">
+        <div class="pipeline-key">detect</div>
+        <div class="pipeline-val">extension + content rules sort each file into a source type</div>
+      </div>
+      <div class="pipeline-item">
+        <div class="pipeline-key">extract</div>
+        <div class="pipeline-val">a source-specific parser pulls fields into a raw record</div>
+      </div>
+      <div class="pipeline-item">
+        <div class="pipeline-key">normalize</div>
+        <div class="pipeline-val">phones, dates, skills, and country codes get standardized</div>
+      </div>
+      <div class="pipeline-item">
+        <div class="pipeline-key">merge</div>
+        <div class="pipeline-val">records are grouped by identity and conflicts resolved</div>
+      </div>
+      <div class="pipeline-item">
+        <div class="pipeline-key">confidence</div>
+        <div class="pipeline-val">each field is scored by source count and reliability</div>
+      </div>
+      <div class="pipeline-item">
+        <div class="pipeline-key">project</div>
+        <div class="pipeline-val">the runtime config reshapes the record into requested output</div>
+      </div>
+      <div class="pipeline-item">
+        <div class="pipeline-key">validate</div>
+        <div class="pipeline-val">the result is checked against the schema before returning</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CANONICAL SCHEMA & NORMALIZATION -->
+  <div class="section">
+    <div class="section-title">Canonical Schema &amp; Normalization</div>
+    <div class="section-desc">
+      Every candidate collapses to one fixed shape: identity (<code>candidate_id</code>, name, emails, phones, location), presentation (links,
+      headline, years of experience), substance (skills, experience, education), and an audit trail (provenance, confidence). Four fields get
+      standardized so the same fact always looks the same regardless of which source it came from:
+    </div>
+    <table class="schema-table">
+      <tr>
+        <td class="field-name">phones</td>
+        <td class="field-desc">E.164. A bare 10-digit US-shaped number is assumed +1; anything already prefixed passes through; anything unparseable becomes null, never a guess.</td>
+      </tr>
+      <tr>
+        <td class="field-name">dates</td>
+        <td class="field-desc">YYYY-MM. dateutil handles most formats; a regex fallback covers things like &ldquo;Mar 2020&rdquo;. A year alone becomes &ldquo;-01&rdquo;.</td>
+      </tr>
+      <tr>
+        <td class="field-name">skills</td>
+        <td class="field-desc">lowercase, canonical name via an alias table (k8s &rarr; kubernetes, ml &rarr; machine learning). Unmapped skills are kept, just lowercased.</td>
+      </tr>
+      <tr>
+        <td class="field-name">country</td>
+        <td class="field-desc">ISO-3166 alpha-2 via an alias table (USA / United States &rarr; US). Unrecognized values stay null rather than being guessed at.</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- MERGE POLICY & CONFIDENCE -->
+  <div class="section">
+    <div class="section-title">Merge Policy &amp; Confidence</div>
+    <p>
+      Two records are the same candidate if they share an email, a normalized phone, or a fuzzy name match of 85% or higher, found via
+      union-find grouping &mdash; this catches &ldquo;Alice Chen&rdquo; and &ldquo;A. Chen&rdquo; without merging two different people who share a common name.
+      Sources are trusted in this order: <strong>ATS JSON &gt; CSV &gt; R&eacute;sum&eacute; / GitHub &gt; Notes</strong>. Scalar fields take the highest-priority value;
+      array fields like emails and skills are unioned across every source instead of picking one winner. Every resolution, including the
+      value that lost, is written to provenance.
+    </p>
+    <p>
+      A field's confidence is the share of sources that reported it, plus a 0.15 bonus when two or more agree, scaled by the most reliable
+      source's weight (ATS 1.00, CSV 0.85, r&eacute;sum&eacute; 0.70, notes 0.50, GitHub 0.40). The overall score is a weighted average across fields, so
+      three corroborating sources always outscore one low-trust note &mdash; and since the formula only looks at the inputs, the same data
+      always scores the same.
+    </p>
+  </div>
+
+  <!-- RUNTIME OUTPUT CONFIGURATION -->
+  <div class="section">
+    <div class="section-title">Runtime Output Configuration</div>
+    <p>
+      The canonical record and its output shape stay fully separate: merge and confidence never know a config exists. A projector
+      resolves each field's <code>from</code> path against the canonical record &mdash; plain keys, index access (<code>emails[0]</code>), array projection
+      (<code>skills[].name</code>), and dot-nesting (<code>location.city</code>) are all supported. A <code>normalize</code> override reformats a field afterward, and
+      <code>on_missing</code> decides what happens when a field isn't there: null it, omit it, or raise.
+    </p>
+  </div>
+
+  <!-- EDGE CASES -->
+  <div class="section" style="margin-bottom: 0;">
+    <div class="section-title">Edge Cases, and What I Left Out</div>
+    <table class="edge-case-table">
+      <tr>
+        <td class="case-trigger">a file is empty, unreadable, or a scanned image-only r&eacute;sum&eacute;</td>
+        <td class="case-effect">logged as a warning and skipped; the run continues with the remaining sources</td>
+      </tr>
+      <tr>
+        <td class="case-trigger">a phone or date is malformed</td>
+        <td class="case-effect">becomes null, with <code>parse_failed</code> recorded in provenance &mdash; nothing is invented</td>
+      </tr>
+      <tr>
+        <td class="case-trigger">two sources disagree on a value</td>
+        <td class="case-effect">priority picks the winner; the value that lost is still recorded for audit</td>
+      </tr>
+      <tr>
+        <td class="case-trigger">the same person, slightly different name</td>
+        <td class="case-effect">fuzzy matching (&ge;85%) catches it without a shared email or phone</td>
+      </tr>
+      <tr>
+        <td class="case-trigger">a record matches nobody else</td>
+        <td class="case-effect">becomes its own standalone profile rather than being dropped</td>
+      </tr>
+    </table>
+    <p style="margin-top: 4px;">
+      Left out deliberately: Since LinkedIn lacks a public keyless API, it was descoped. However, GitHub API lookup is fully live using public REST endpoints. Each still
+      parses its URL and merges correctly if another source mentions the same link. Given more time, I'd add OCR for scanned r&eacute;sum&eacute;s.
+    </p>
+  </div>
+
+  <!-- FOOTER -->
+  <hr class="footer-divider">
+  <div class="footer-container">
+    <div>Multi-Source Candidate Data Transformer &mdash; design document, step 1 of 2</div>
+    <div>implementation in the accompanying repository</div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "$schema": "../schema/config_schema.json",
+  "fields": [
+    { "path": "full_name", "type": "string", "required": true, "normalize": "titlecase" },
+    { "path": "primary_email", "from": "emails[0]", "type": "string", "required": true, "normalize": "lowercase" },
+    { "path": "phone", "from": "phones[0]", "type": "string", "normalize": "E164" },
+    { "path": "skills", "from": "skills[].name", "type": "array", "normalize": "canonical" }
+  ],
+  "include_confidence": false,
+  "on_missing": "null"
+}

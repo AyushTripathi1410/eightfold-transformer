@@ -1,0 +1,526 @@
+[
+  {
+    "full_name": "Alice Johnson",
+    "headline": "Senior Software Engineer at Google",
+    "years_experience": 5,
+    "emails": [
+      "alice.johnson@gmail.com",
+      "a.johnson@google.com"
+    ],
+    "phones": [
+      "+14155551234"
+    ],
+    "location": {
+      "city": "San Francisco",
+      "region": "CA",
+      "country": "US"
+    },
+    "links": {
+      "linkedin": "https://linkedin.com/in/alicejohnson",
+      "github": "https://github.com/alicejohnson",
+      "portfolio": null,
+      "other": []
+    },
+    "skills": [
+      {
+        "name": "agile",
+        "confidence": 0.35,
+        "sources": [
+          "resume_alice.pdf"
+        ]
+      },
+      {
+        "name": "aws",
+        "confidence": 0.637,
+        "sources": [
+          "ats_dump.json",
+          "resume_alice.pdf"
+        ]
+      },
+      {
+        "name": "cd",
+        "confidence": 0.35,
+        "sources": [
+          "resume_alice.pdf"
+        ]
+      },
+      {
+        "name": "ci",
+        "confidence": 0.35,
+        "sources": [
+          "resume_alice.pdf"
+        ]
+      },
+      {
+        "name": "docker",
+        "confidence": 0.581,
+        "sources": [
+          "recruiter_export.csv",
+          "resume_alice.pdf"
+        ]
+      },
+      {
+        "name": "git",
+        "confidence": 0.35,
+        "sources": [
+          "resume_alice.pdf"
+        ]
+      },
+      {
+        "name": "go",
+        "confidence": 0.762,
+        "sources": [
+          "ats_dump.json",
+          "notes_alice.txt",
+          "recruiter_export.csv",
+          "resume_alice.pdf"
+        ]
+      },
+      {
+        "name": "grafana",
+        "confidence": 0.35,
+        "sources": [
+          "resume_alice.pdf"
+        ]
+      },
+      {
+        "name": "java",
+        "confidence": 0.765,
+        "sources": [
+          "ats_dump.json",
+          "recruiter_export.csv",
+          "resume_alice.pdf"
+        ]
+      },
+      {
+        "name": "jenkins",
+        "confidence": 0.35,
+        "sources": [
+          "resume_alice.pdf"
+        ]
+      },
+      {
+        "name": "kubernetes",
+        "confidence": 0.765,
+        "sources": [
+          "ats_dump.json",
+          "recruiter_export.csv",
+          "resume_alice.pdf"
+        ]
+      },
+      {
+        "name": "machine learning",
+        "confidence": 0.615,
+        "sources": [
+          "notes_alice.txt",
+          "recruiter_export.csv",
+          "resume_alice.pdf"
+        ]
+      },
+      {
+        "name": "pandas",
+        "confidence": 0.35,
+        "sources": [
+          "resume_alice.pdf"
+        ]
+      },
+      {
+        "name": "prometheus",
+        "confidence": 0.35,
+        "sources": [
+          "resume_alice.pdf"
+        ]
+      },
+      {
+        "name": "python",
+        "confidence": 0.762,
+        "sources": [
+          "ats_dump.json",
+          "notes_alice.txt",
+          "recruiter_export.csv",
+          "resume_alice.pdf"
+        ]
+      },
+      {
+        "name": "pytorch",
+        "confidence": 0.35,
+        "sources": [
+          "resume_alice.pdf"
+        ]
+      },
+      {
+        "name": "rest",
+        "confidence": 0.25,
+        "sources": [
+          "notes_alice.txt"
+        ]
+      },
+      {
+        "name": "system design",
+        "confidence": 0.25,
+        "sources": [
+          "notes_alice.txt"
+        ]
+      },
+      {
+        "name": "tensorflow",
+        "confidence": 0.35,
+        "sources": [
+          "resume_alice.pdf"
+        ]
+      },
+      {
+        "name": "terraform",
+        "confidence": 0.35,
+        "sources": [
+          "resume_alice.pdf"
+        ]
+      },
+      {
+        "name": "test-driven development",
+        "confidence": 0.35,
+        "sources": [
+          "resume_alice.pdf"
+        ]
+      }
+    ],
+    "experience": [
+      {
+        "company": "Google",
+        "title": "Senior Software Engineer",
+        "start": "2022-03",
+        "end": null,
+        "summary": "Lead team of 4 engineers building real-time ML feature store; Designed Kubernetes auto-scaling pipeline reducing costs by 30%; Drove adoption of Go microservices, P99 latency under 15ms; Mentored 3 junior engineers and led architecture reviews"
+      },
+      {
+        "company": "Amazon",
+        "title": "Software Engineer",
+        "start": "2019-06",
+        "end": "2022-02",
+        "summary": "Developed backend services for Recommendations engine (Java, Python); Built ML pipeline on AWS SageMaker improving accuracy by 12%; Reduced deployment time from 45 to 8 minutes via CI/CD platform"
+      }
+    ],
+    "education": [
+      {
+        "institution": "Stanford University",
+        "degree": "Master",
+        "field": "Computer Science",
+        "end_year": 2019
+      },
+      {
+        "institution": "University Of California, Berkeley",
+        "degree": "Bachelor",
+        "field": "Computer Science",
+        "end_year": 2017
+      }
+    ],
+    "candidate_id": "bbe9665df433876a",
+    "provenance": [
+      {
+        "field": "full_name",
+        "source": "ats_dump.json",
+        "method": "direct_mapping"
+      },
+      {
+        "field": "headline",
+        "source": "ats_dump.json",
+        "method": "direct_mapping"
+      },
+      {
+        "field": "years_experience",
+        "source": "resume_alice.pdf",
+        "method": "pdf_text_extraction"
+      },
+      {
+        "field": "emails",
+        "source": "ats_dump.json",
+        "method": "direct_mapping"
+      },
+      {
+        "field": "emails",
+        "source": "recruiter_export.csv",
+        "method": "direct_mapping"
+      },
+      {
+        "field": "phones",
+        "source": "ats_dump.json",
+        "method": "direct_mapping"
+      },
+      {
+        "field": "location.city",
+        "source": "ats_dump.json",
+        "method": "direct_mapping"
+      },
+      {
+        "field": "location.region",
+        "source": "ats_dump.json",
+        "method": "direct_mapping"
+      },
+      {
+        "field": "location.country",
+        "source": "ats_dump.json",
+        "method": "direct_mapping"
+      },
+      {
+        "field": "links.linkedin",
+        "source": "resume_alice.pdf",
+        "method": "pdf_text_extraction"
+      },
+      {
+        "field": "links.github",
+        "source": "resume_alice.pdf",
+        "method": "pdf_text_extraction"
+      },
+      {
+        "field": "experience",
+        "source": "ats_dump.json",
+        "method": "direct_mapping"
+      },
+      {
+        "field": "experience",
+        "source": "ats_dump.json",
+        "method": "direct_mapping"
+      },
+      {
+        "field": "education",
+        "source": "ats_dump.json",
+        "method": "direct_mapping"
+      },
+      {
+        "field": "education",
+        "source": "resume_alice.pdf",
+        "method": "pdf_text_extraction"
+      }
+    ],
+    "overall_confidence": 0.56
+  },
+  {
+    "full_name": "Charlie Davis",
+    "headline": "Full Stack Developer at Startup Inc",
+    "years_experience": null,
+    "emails": [
+      "charlie.d@outlook.com"
+    ],
+    "phones": [],
+    "location": {
+      "city": "Austin",
+      "region": "TX",
+      "country": "US"
+    },
+    "links": {
+      "linkedin": null,
+      "github": null,
+      "portfolio": null,
+      "other": []
+    },
+    "skills": [
+      {
+        "name": "javascript",
+        "confidence": 0.5,
+        "sources": [
+          "ats_dump.json"
+        ]
+      },
+      {
+        "name": "node.js",
+        "confidence": 0.5,
+        "sources": [
+          "ats_dump.json"
+        ]
+      },
+      {
+        "name": "postgresql",
+        "confidence": 0.5,
+        "sources": [
+          "ats_dump.json"
+        ]
+      },
+      {
+        "name": "react",
+        "confidence": 0.5,
+        "sources": [
+          "ats_dump.json"
+        ]
+      }
+    ],
+    "experience": [
+      {
+        "company": "Startup Inc",
+        "title": "Full Stack Developer",
+        "start": "2021-08",
+        "end": null,
+        "summary": null
+      },
+      {
+        "company": "Freelance",
+        "title": "Web Developer",
+        "start": "2019-01",
+        "end": "2021-07",
+        "summary": null
+      }
+    ],
+    "education": [
+      {
+        "institution": "University of Texas at Austin",
+        "degree": "BS",
+        "field": "Computer Science",
+        "end_year": 2018
+      }
+    ],
+    "candidate_id": "97407b63e85adb22",
+    "provenance": [
+      {
+        "field": "full_name",
+        "source": "ats_dump.json",
+        "method": "direct_mapping"
+      },
+      {
+        "field": "headline",
+        "source": "ats_dump.json",
+        "method": "direct_mapping"
+      },
+      {
+        "field": "emails",
+        "source": "ats_dump.json",
+        "method": "direct_mapping"
+      },
+      {
+        "field": "location.city",
+        "source": "ats_dump.json",
+        "method": "direct_mapping"
+      },
+      {
+        "field": "location.region",
+        "source": "ats_dump.json",
+        "method": "direct_mapping"
+      },
+      {
+        "field": "location.country",
+        "source": "ats_dump.json",
+        "method": "direct_mapping"
+      },
+      {
+        "field": "experience",
+        "source": "ats_dump.json",
+        "method": "direct_mapping"
+      },
+      {
+        "field": "experience",
+        "source": "ats_dump.json",
+        "method": "direct_mapping"
+      },
+      {
+        "field": "education",
+        "source": "ats_dump.json",
+        "method": "direct_mapping"
+      }
+    ],
+    "overall_confidence": 0.5
+  },
+  {
+    "full_name": "Bob Smith",
+    "headline": "Data Scientist",
+    "years_experience": null,
+    "emails": [
+      "bob.smith@yahoo.com"
+    ],
+    "phones": [
+      "+12125559876"
+    ],
+    "location": {
+      "city": "New York",
+      "region": "NY",
+      "country": "US"
+    },
+    "links": {
+      "linkedin": null,
+      "github": null,
+      "portfolio": null,
+      "other": []
+    },
+    "skills": [
+      {
+        "name": "python",
+        "confidence": 0.425,
+        "sources": [
+          "recruiter_export.csv"
+        ]
+      },
+      {
+        "name": "r",
+        "confidence": 0.425,
+        "sources": [
+          "recruiter_export.csv"
+        ]
+      },
+      {
+        "name": "sql",
+        "confidence": 0.425,
+        "sources": [
+          "recruiter_export.csv"
+        ]
+      },
+      {
+        "name": "tensorflow",
+        "confidence": 0.425,
+        "sources": [
+          "recruiter_export.csv"
+        ]
+      }
+    ],
+    "experience": [
+      {
+        "company": "Meta",
+        "title": "Data Scientist",
+        "start": null,
+        "end": null,
+        "summary": null
+      }
+    ],
+    "education": [],
+    "candidate_id": "79b41b8ad9064c8c",
+    "provenance": [
+      {
+        "field": "full_name",
+        "source": "recruiter_export.csv",
+        "method": "direct_mapping"
+      },
+      {
+        "field": "headline",
+        "source": "recruiter_export.csv",
+        "method": "direct_mapping"
+      },
+      {
+        "field": "emails",
+        "source": "recruiter_export.csv",
+        "method": "direct_mapping"
+      },
+      {
+        "field": "phones",
+        "source": "recruiter_export.csv",
+        "method": "direct_mapping"
+      },
+      {
+        "field": "location.city",
+        "source": "recruiter_export.csv",
+        "method": "direct_mapping"
+      },
+      {
+        "field": "location.region",
+        "source": "recruiter_export.csv",
+        "method": "direct_mapping"
+      },
+      {
+        "field": "location.country",
+        "source": "recruiter_export.csv",
+        "method": "direct_mapping"
+      },
+      {
+        "field": "experience",
+        "source": "recruiter_export.csv",
+        "method": "direct_mapping"
+      }
+    ],
+    "overall_confidence": 0.5
+  }
+]

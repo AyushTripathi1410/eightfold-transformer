@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://eightfold-transformer.example.com/schema/config.json",
+  "title": "Transformer Runtime Configuration",
+  "description": "Schema for the runtime configuration of the Eightfold Multi-Source Candidate Data Transformer. Controls which fields to output, normalization rules, and error handling behavior.",
+  "type": "object",
+  "required": ["fields"],
+  "additionalProperties": false,
+  "properties": {
+    "fields": {
+      "type": "array",
+      "description": "List of field selectors that control which canonical fields appear in the output and how they are mapped or transformed.",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["path"],
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Dot-notation path to the output field (e.g., 'full_name', 'emails', 'skills[].name'). Supports array indexing with [N] and array iteration with [].",
+            "minLength": 1
+          },
+          "from": {
+            "type": "string",
+            "description": "Optional source path in the canonical schema to pull the value from, if different from 'path'. Use when renaming or extracting nested fields (e.g., 'emails[0]' to produce a single 'primary_email')."
+          },
+          "type": {
+            "type": "string",
+            "description": "Expected output type for the field. Used for validation and casting.",
+            "enum": ["string", "number", "boolean", "array", "object"]
+          },
+          "required": {
+            "type": "boolean",
+            "description": "If true, the transformer will enforce that this field is present and non-null in the output. Behavior when missing is controlled by 'on_missing'.",
+            "default": false
+          },
+          "normalize": {
+            "type": "string",
+            "description": "Optional normalization strategy to apply to this field's value.",
+            "enum": ["lowercase", "uppercase", "titlecase", "E164", "canonical", "trim", "iso_date"]
+          }
+        }
+      }
+    },
+    "include_confidence": {
+      "type": "boolean",
+      "description": "If true, include per-skill confidence scores and the overall_confidence field in the output. If false, strip all confidence metadata.",
+      "default": true
+    },
+    "on_missing": {
+      "type": "string",
+      "description": "Strategy for handling fields that are requested but have no value in the merged profile.",
+      "enum": ["null", "omit", "error"],
+      "default": "null"
+    }
+  }
+}
